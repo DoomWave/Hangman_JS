@@ -1,6 +1,7 @@
 const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
+const hangmanImage = document.querySelector(".hangman-box img");
 const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
 
@@ -21,6 +22,7 @@ const getRandomWord = () => {
     const {word, hint} = wordList[Math.floor(Math.random() * wordList.length)];
     currentWord = word;
     document.querySelector(".hint-text b").innerText = hint;
+
     resetGame();
 }
 
@@ -57,6 +59,5 @@ for (let i = 97; i <= 122; i++) {
     keyboardDiv.appendChild(button);
     button.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
 }
-
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord)
